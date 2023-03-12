@@ -3,7 +3,6 @@ import Card from './Card';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
-
 export default function Main( {shoes, changeShoes} ) {
     const [word, setWord] = useState('');
     const [count, setCount] = useState(0);
@@ -47,7 +46,9 @@ export default function Main( {shoes, changeShoes} ) {
             return (
               <Card
               shoe={shoe}
-              onClick={()=>navigate(`/detail/${shoe.id+1}`)}
+              onClick={()=>{
+                navigate(`/detail/${shoe.id+1}`);
+                }}
               />
             );
           })}

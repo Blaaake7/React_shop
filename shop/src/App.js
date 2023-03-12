@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Header from './components/Header';
 import './App.css';
@@ -12,6 +12,11 @@ import Cart from './components/Cart';
 
 export default function App() {
   const [shoes, setShoes] = useState(data);
+  useEffect(()=>{
+    if (localStorage.getItem('watched') == null) {
+      localStorage.setItem('watched', JSON.stringify([]))
+    }
+  },[]);
 
   const changeShoes = (value) => {
     setShoes((prev) => prev.concat(value));

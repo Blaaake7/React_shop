@@ -9,9 +9,17 @@ export default function Detail({ shoes }) {
     const [sale, setSale] = useState(true);
     const [tab, setTab] = useState(0);
     const found = shoes.find((shoe) => num == (shoe.id + 1));
-    console.log(found);
     useEffect(() => {
         setTimeout(() => {setSale(false)}, 3000);
+    }, []);
+
+    useEffect(() => {
+      let getLocal = localStorage.getItem('watched');
+      getLocal = JSON.parse(getLocal);
+      getLocal.push(found.id);
+      getLocal = new Set(getLocal);
+      getLocal = Array.from(getLocal);
+      localStorage.setItem('watched', JSON.stringify(getLocal));
     }, []);
     const dispatch = useDispatch();
 
